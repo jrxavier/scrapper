@@ -14,9 +14,7 @@ class Scrapper(object):
         self.bs = None
 
         try:
-            headers = {
-                'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36'}
-            response = requests.get(self.url, headers=headers)
+            response = requests.get(self.url)
             content = response.content
         except HTTPError as e:
             print(e)
@@ -24,7 +22,7 @@ class Scrapper(object):
             print(e)
         try:
             if self.bs == None:
-                self.bs = BeautifulSoup(content, "html.parser")
+                self.bs = BeautifulSoup(content, "lxml")
         except AttributeError as e:
             print(e)
 
