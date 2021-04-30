@@ -42,8 +42,26 @@ elementos = bs.find_all(text=re.compile(r'reviews'))
 for el in elementos:
     print(el)
 
-# Trabalhando com dados dos cartões
+# Trabalhando com dados dos cartões: filhos e conteudos
+# Retorna um iterator
 print("#####################")
-cards = bs.find_all("div", class_="col-sm-4")
-for card in cards:
-    print(card)
+print(list(filter(None, [el.name for el in bs.find(
+    "div", class_="thumbnail").children])))
+
+print("#####################")
+print(bs.find("div", class_="thumbnail").findChildren())
+
+print("#####################")
+print(bs.find("div", class_="thumbnail").children)
+
+print("#####################")
+# Retorna toda a tag parent do elemento buscado
+print(bs.find("div", class_="thumbnail").parent.name)
+# Percorre todo o div até encontrar algum texto !
+print(bs.find("div", class_="thumbnail").parent.text)
+#print(bs.find("div", class_="thumbnail").findParent())
+
+print("#####################")
+# Busca pelos parents
+for el in bs.find("div", class_="thumbnail").parents:
+    print(el.name)
