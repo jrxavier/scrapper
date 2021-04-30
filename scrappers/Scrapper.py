@@ -36,12 +36,12 @@ class Scrapper(object):
 
     def getCards(self):
         try:
-            title = self.bs.find_all(
+            cards = self.bs.find_all(
                 'div', class_='col-sm-4 col-lg-4 col-md-4')
         except AttributeError as e:
             print(e)
 
-        return title
+        return cards
 
     # Funcao interessante que permite avaliar se uma url está aberta para robô
     def roboTxt(self):

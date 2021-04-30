@@ -2,3 +2,6 @@ bs4
 requests
 pandas
 lxml
+scrapy
+#htmllib5
+#selenium
